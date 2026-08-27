@@ -47,3 +47,52 @@ export async function getLogsForDateRange(
 export async function getAllLogs(): Promise<FoodLog[]> {
   return db.foodLogs.orderBy('date').reverse().toArray()
 }
+
+export interface FrequentItem {
+  description: string
+  items: FoodLog['items']
+  totalCalories: number
+  totalProtein: number
+  count: number
+  mealSlot: FoodLog['mealSlot']
+}
+
+export async function getFrequentItems(): Promise<FrequentItem[]> {
+  const logs = await db.foodLogs.toArray()
+  const counts = new Map<string, FrequentItem>()
+  for (const log of logs) {
+    const key = log.description.toLowerCase().trim()
+    if (!key || key.startsWith('📋') || key.startsWith('📸')) {
+      const itemKey = log.items.map((i) => i.name.toLowerCase()).sort().join('|')
+      if (!itemKey) continue
+      const existing = counts.get(itemKey)
+      if (existing) {
+        existing.count++
+      } else {
+        counts.set(itemKey, {
+          description: log.description,
+          items: log.items,
+          totalCalories: log.totalCalories,
+          totalProtein: log.totalProtein,
+          count: 1,
+          mealSlot: log.mealSlot,
+        })
+      }
+      continue
+    }
+    const existing = counts.get(key)
+    if (existing) {
+      existing.count++
+    } else {
+      counts.set(key, {
+        description: log.description,
+        items: log.items,
+        totalCalories: log.totalCalories,
+        totalProtein: log.totalProtein,
+        count: 1,
+        mealSlot: log.mealSlot,
+      })
+    }
+  }
+  return Array.from(counts.values()).sort((a, b) => b.count - a.count)
+}
