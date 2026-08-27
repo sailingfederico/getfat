@@ -1,47 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-27T19:18:22.248Z",
+  "exportedAt": "2026-08-27T19:34:30.583Z",
   "foodLogs": [],
-  "targets": [
-    {
-      "calories": 2800,
-      "protein": 200,
-      "carbs": 300,
-      "fat": 90,
-      "effectiveFrom": "2026-08-27",
-      "id": 1
-    },
-    {
-      "calories": 2850,
-      "protein": 200,
-      "carbs": 300,
-      "fat": 95,
-      "effectiveFrom": "2026-08-27",
-      "id": 2
-    },
-    {
-      "calories": 2850,
-      "protein": 200,
-      "carbs": 300,
-      "fat": 95,
-      "effectiveFrom": "2026-08-27",
-      "id": 3
-    },
-    {
-      "calories": 2850,
-      "protein": 200,
-      "carbs": 300,
-      "fat": 95,
-      "effectiveFrom": "2026-08-27",
-      "id": 4
-    },
-    {
-      "calories": 2800,
-      "protein": 190,
-      "carbs": 295,
-      "fat": 95,
-      "effectiveFrom": "2026-08-27",
-      "id": 5
-    }
-  ]
+  "targets": []
 }
