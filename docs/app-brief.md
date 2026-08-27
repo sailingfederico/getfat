@@ -7,7 +7,8 @@ GetFat is a personal calorie and macro tracker built for body recomposition. It 
 ## Core Principles
 
 - **Mobile-first PWA** — no app store, installed from the browser, runs like a native app
-- **No server** — all data stored locally on the device (IndexedDB); AI calls go directly from the browser to the Anthropic API
+- **No server** — all data stored locally on the device (IndexedDB) with automatic backup to a GitHub `data` branch; AI calls go directly from the browser to the Anthropic API
+- **Persistent storage** — data survives browser data clearing via GitHub sync; IndexedDB serves as a fast local cache
 - **AI-powered estimation** — Claude Haiku 4.5 estimates calories and macros from free-text ingredients, pasted recipes, meal names, food label photos, or meal photos
 - **User is always in control** — every AI estimate can be reviewed, edited, or rejected before saving
 - **Cost-conscious** — frequently used items are cached and reused without API calls; photos are compressed before sending
@@ -35,5 +36,6 @@ Adult male, strength training, familiar with macros (protein/carbs/fat), wants a
 
 - Internet required for AI estimation (no offline food database)
 - User provides their own Anthropic API key
-- Data lives only on the device — clearing browser data deletes everything
+- Data lives on a `data` branch in the GitHub repo, cached locally in IndexedDB
+- Clearing browser data requires re-entering API key and GitHub token, but food logs are automatically restored from GitHub on next load
 - Micronutrient analysis is AI-estimated, not from a certified database

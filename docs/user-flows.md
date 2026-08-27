@@ -176,10 +176,37 @@ Navigation → [🎯 Targets]
   → Previous targets preserved (history of changes)
 ```
 
-## Flow 16: Settings Management
+## Flow 17: GitHub Sync Setup
 
 ```
 Navigation → [⚙️ Settings]
+  → GitHub Backup section
+  → Enter repo: owner/repo (e.g. sailingfederico/getfat)
+  → Enter GitHub fine-grained token (Contents read/write)
+  → [Save GitHub Settings]
+  → [↑ Push to GitHub] → creates data branch if needed → uploads data
+  → Last sync timestamp shown
+```
+
+## Flow 18: Automatic Restore After Browser Data Clear
+
+```
+User clears browser data (or uses new device)
+  → Opens app → empty dashboard
+  → Goes to Settings → re-enters API key + GitHub token + repo
+  → [Save] → app detects empty DB + configured sync
+  → Auto-pulls from GitHub → all food logs and targets restored
+  → Dashboard shows full history
+```
+
+## Flow 19: Ongoing Auto-Sync
+
+```
+User logs food / deletes entry / changes targets
+  → Data saved to IndexedDB immediately
+  → After 3s idle, auto-pushes to GitHub in background
+  → No user action needed
+```
   → Anthropic API Key: enter/update, show/hide toggle
   → PIN Lock: set new PIN / change PIN / remove PIN
   → Data: [Clear All Food Data] with confirmation dialog

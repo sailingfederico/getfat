@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getSetting } from './db/database'
+import { autoSyncOnStartup } from './services/sync'
 import PinLock from './components/PinLock'
 import Dashboard from './components/Dashboard'
 import AddFood from './components/AddFood'
@@ -28,6 +29,7 @@ export default function App() {
       if (!hash) setLocked(false)
       setPinChecked(true)
     })
+    autoSyncOnStartup()
   }, [])
 
   if (!pinChecked) {

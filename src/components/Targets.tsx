@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getActiveTargets, db } from '../db/database'
+import { requestSync } from '../services/sync'
 
 export default function Targets() {
   const [calories, setCalories] = useState(2400)
@@ -33,6 +34,7 @@ export default function Targets() {
       fat,
       effectiveFrom: new Date().toISOString().split('T')[0],
     })
+    requestSync()
     setSaved(true)
     setTimeout(() => setSaved(false), 2000)
   }

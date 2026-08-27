@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { FoodItem, FoodLog } from '../types'
 import { db } from '../db/database'
+import { requestSync } from '../services/sync'
 
 interface Props {
   items: FoodItem[]
@@ -59,6 +60,7 @@ export default function ReviewEstimate({
       createdAt: new Date().toISOString(),
     }
     await db.foodLogs.add(log)
+    requestSync()
     onSaved()
   }
 

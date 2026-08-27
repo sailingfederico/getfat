@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getSetting, setSetting, db } from '../db/database'
+import { pullFromGitHub, pushToGitHub } from '../services/sync'
 
 async function hashPin(pin: string): Promise<string> {
   const encoder = new TextEncoder()
@@ -17,6 +18,11 @@ export default function Settings() {
   const [savedMsg, setSavedMsg] = useState('')
   const [newPin, setNewPin] = useState('')
   const [hasPin, setHasPin] = useState(false)
+  const [ghToken, setGhToken] = useState('')
+  const [ghRepo, setGhRepo] = useState('')
+  const [showGhToken, setShowGhToken] = useState(false)
+  const [lastSync, setLastSync] = useState('')
+  const [syncing, setSyncing] = useState(false)
 
   useEffect(() => {
     getSetting('anthropic_api_key').then((key) => {
@@ -26,6 +32,9 @@ export default function Settings() {
       }
     })
     getSetting('pin_hash').then((hash) => setHasPin(!!hash))
+    getSetting('github_token').then((t) => { if (t) setGhToken(t) })
+    getSetting('github_repo').then((r) => { if (r) setGhRepo(r) })
+    getSetting('last_sync').then((s) => { if (s) setLastSync(s) })
   }, [])
 
   const flash = (msg: string) => {
@@ -115,6 +124,72 @@ export default function Settings() {
         >
           {hasApiKey ? 'Update Key' : 'Save Key'}
         </button>
+      </section>
+
+      {/* GitHub Sync */}
+      <section className="mb-6">
+        <h2 className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">
+          GitHub Backup
+        </h2>
+        <p className="text-xs text-gray-400 mb-2">
+          Backs up food logs to a <code className="text-emerald-500">data</code> branch in your repo.
+          Create a{' '}
+          <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener noreferrer"
+            className="text-emerald-500 underline">fine-grained token</a>{' '}
+          with Contents read/write on your GetFat repo.
+        </p>
+        <div className="space-y-2 mb-2">
+          <input value={ghRepo} onChange={(e) => setGhRepo(e.target.value)}
+            placeholder="owner/repo (e.g. sailingfederico/getfat)"
+            className="w-full p-3 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700
+                       text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+          <div className="flex gap-2">
+            <input type={showGhToken ? 'text' : 'password'} value={ghToken}
+              onChange={(e) => setGhToken(e.target.value)} placeholder="github_pat_..."
+              className="flex-1 p-3 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700
+                         text-sm font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+            <button onClick={() => setShowGhToken(!showGhToken)}
+              className="px-3 bg-gray-100 dark:bg-gray-800 rounded-xl text-sm">
+              {showGhToken ? 'Hide' : 'Show'}
+            </button>
+          </div>
+        </div>
+        <button onClick={async () => {
+            await setSetting('github_token', ghToken)
+            await setSetting('github_repo', ghRepo)
+            flash('GitHub settings saved!')
+          }}
+          className="w-full py-2 bg-emerald-500 text-white rounded-xl font-medium text-sm mb-2">
+          Save GitHub Settings
+        </button>
+        <div className="flex gap-2">
+          <button disabled={syncing} onClick={async () => {
+              setSyncing(true)
+              const r = await pushToGitHub()
+              flash(r.message)
+              if (r.ok) setLastSync(new Date().toISOString())
+              setSyncing(false)
+            }}
+            className="flex-1 py-2 bg-gray-100 dark:bg-gray-800 rounded-xl text-sm font-medium disabled:opacity-50">
+            {syncing ? '...' : '↑ Push to GitHub'}
+          </button>
+          <button disabled={syncing} onClick={async () => {
+              if (!window.confirm('Replace local data with GitHub backup?')) return
+              setSyncing(true)
+              const r = await pullFromGitHub()
+              flash(r.message)
+              if (r.ok) setLastSync(new Date().toISOString())
+              setSyncing(false)
+            }}
+            className="flex-1 py-2 bg-gray-100 dark:bg-gray-800 rounded-xl text-sm font-medium disabled:opacity-50">
+            {syncing ? '...' : '↓ Pull from GitHub'}
+          </button>
+        </div>
+        {lastSync && (
+          <p className="text-xs text-gray-400 mt-2 text-center">
+            Last sync: {new Date(lastSync).toLocaleString()}
+          </p>
+        )}
       </section>
 
       {/* PIN */}

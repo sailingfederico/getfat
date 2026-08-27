@@ -82,8 +82,18 @@
 | R8.4 | Show/hide toggle for API key | ✅ Done |
 | R8.5 | Clear all food data option with confirmation | ✅ Done |
 
-## R9 — Deployment & PWA
+## R10 — Data Persistence (GitHub Sync)
 
+| ID | Requirement | Status |
+|----|------------|--------|
+| R10.1 | Store food logs and targets as JSON on a `data` branch in the GitHub repo | ✅ Done |
+| R10.2 | Auto-push to GitHub (debounced 3s) after any data change | ✅ Done |
+| R10.3 | Auto-pull from GitHub on startup if local DB is empty (restore after browser clear) | ✅ Done |
+| R10.4 | Manual push/pull buttons in Settings | ✅ Done |
+| R10.5 | Create orphan `data` branch automatically on first sync | ✅ Done |
+| R10.6 | SHA-based conflict handling with automatic retry | ✅ Done |
+| R10.7 | GitHub fine-grained token with Contents read/write scope | ✅ Done |
+| R10.8 | Sensitive settings (API key, PIN, GitHub token) stay local only — not synced | ✅ Done |
 | ID | Requirement | Status |
 |----|------------|--------|
 | R9.1 | Installable as PWA (Add to Home Screen) | ✅ Done |
