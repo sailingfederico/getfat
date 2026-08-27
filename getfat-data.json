@@ -1,6 +1,15 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-27T19:34:30.583Z",
+  "exportedAt": "2026-08-27T19:37:33.470Z",
   "foodLogs": [],
-  "targets": []
+  "targets": [
+    {
+      "calories": 2800,
+      "protein": 190,
+      "carbs": 295,
+      "fat": 95,
+      "effectiveFrom": "2026-08-27",
+      "id": 1
+    }
+  ]
 }
