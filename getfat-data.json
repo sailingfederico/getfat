@@ -1,34 +1,7 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-27T19:38:34.362Z",
-  "foodLogs": [
-    {
-      "date": "2026-08-27",
-      "mealSlot": "snack",
-      "description": "Fetaost 30gr",
-      "items": [
-        {
-          "name": "Fetaost (Feta cheese)",
-          "quantity": 30,
-          "unit": "g",
-          "calories": 75,
-          "protein": 4,
-          "carbs": 1,
-          "fat": 6,
-          "fiber": 0,
-          "edited": false
-        }
-      ],
-      "totalCalories": 75,
-      "totalProtein": 4,
-      "totalCarbs": 1,
-      "totalFat": 6,
-      "totalFiber": 0,
-      "approved": true,
-      "createdAt": "2026-08-27T19:38:31.346Z",
-      "id": 1
-    }
-  ],
+  "exportedAt": "2026-08-27T19:39:21.879Z",
+  "foodLogs": [],
   "targets": [
     {
       "calories": 2800,
