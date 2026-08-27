@@ -154,13 +154,18 @@ export default function Settings() {
             </button>
           </div>
         </div>
-        <button onClick={async () => {
+        <button disabled={syncing} onClick={async () => {
             await setSetting('github_token', ghToken)
             await setSetting('github_repo', ghRepo)
-            flash('GitHub settings saved!')
+            flash('GitHub settings saved! Pushing existing data...')
+            setSyncing(true)
+            const r = await pushToGitHub()
+            flash(r.message)
+            if (r.ok) setLastSync(new Date().toISOString())
+            setSyncing(false)
           }}
-          className="w-full py-2 bg-emerald-500 text-white rounded-xl font-medium text-sm mb-2">
-          Save GitHub Settings
+          className="w-full py-2 bg-emerald-500 text-white rounded-xl font-medium text-sm mb-2 disabled:opacity-50">
+          {syncing ? 'Saving & syncing...' : 'Save GitHub Settings'}
         </button>
         <div className="flex gap-2">
           <button disabled={syncing} onClick={async () => {
@@ -177,8 +182,11 @@ export default function Settings() {
               if (!window.confirm('Replace local data with GitHub backup?')) return
               setSyncing(true)
               const r = await pullFromGitHub()
+              if (r.ok) {
+                window.location.reload()
+                return
+              }
               flash(r.message)
-              if (r.ok) setLastSync(new Date().toISOString())
               setSyncing(false)
             }}
             className="flex-1 py-2 bg-gray-100 dark:bg-gray-800 rounded-xl text-sm font-medium disabled:opacity-50">

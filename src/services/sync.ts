@@ -123,7 +123,7 @@ export async function pushToGitHub(): Promise<{ ok: boolean; message: string }> 
     const result = await putRes.json()
     await setSetting('github_data_sha', result.content.sha)
     await setSetting('last_sync', new Date().toISOString())
-    return { ok: true, message: 'Synced to GitHub' }
+    return { ok: true, message: `Pushed ${data.foodLogs.length} logs, ${data.targets.length} targets` }
   } catch (e: unknown) {
     return { ok: false, message: e instanceof Error ? e.message : 'Push failed' }
   }
