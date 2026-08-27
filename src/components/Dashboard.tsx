@@ -83,6 +83,14 @@ export default function Dashboard({ onAddFood }: Props) {
         <MacroDisplay label="Fat" current={totals.fat} target={targets?.fat ?? 0} unit="g" color="rose" />
       </div>
 
+      <button
+        onClick={onAddFood}
+        className="w-full py-3 mb-4 bg-emerald-500 text-white rounded-xl font-semibold text-lg
+                   active:bg-emerald-600 transition-colors"
+      >
+        + Add Food
+      </button>
+
       {logs.length > 0 && (
         <div className="mb-4">
           <h2 className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2 uppercase tracking-wide">
@@ -146,14 +154,6 @@ export default function Dashboard({ onAddFood }: Props) {
           )}
         </div>
       )}
-
-      <button
-        onClick={onAddFood}
-        className="w-full py-3 bg-emerald-500 text-white rounded-xl font-semibold text-lg
-                   active:bg-emerald-600 transition-colors"
-      >
-        + Add Food
-      </button>
     </div>
   )
 }

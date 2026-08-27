@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import type { FoodItem, InputMode } from '../types'
-import { estimateNutrition, estimateFromImage } from '../services/ai'
+import { estimateNutrition, estimateFromImage, scanLabel, type LabelScanResult } from '../services/ai'
 
 interface Props {
   onEstimated: (items: FoodItem[], notes: string, description: string, mealSlot: string) => void
@@ -35,6 +35,9 @@ export default function AddFood({ onEstimated, onCancel }: Props) {
   const [error, setError] = useState('')
   const fileInputRef = useRef<HTMLInputElement>(null)
   const photoModeRef = useRef<'label' | 'meal'>('label')
+  const [labelData, setLabelData] = useState<LabelScanResult | null>(null)
+  const [labelName, setLabelName] = useState('')
+  const [labelQty, setLabelQty] = useState('')
 
   const currentMode = MODES.find((m) => m.key === mode)!
 
@@ -84,14 +87,97 @@ export default function AddFood({ onEstimated, onCancel }: Props) {
     setError('')
     try {
       const { base64, mediaType } = await resizeImage(file)
-      const result = await estimateFromImage(base64, mediaType, photoModeRef.current)
-      const desc = photoModeRef.current === 'label' ? '📷 Scanned label' : '📷 Photo meal (β)'
-      onEstimated(result.items, result.notes ?? '', desc, mealSlot)
+      if (photoModeRef.current === 'label') {
+        const result = await scanLabel(base64, mediaType)
+        setLabelData(result)
+        setLabelName(result.productName)
+        setLabelQty(result.servingSize?.replace(/[^\d.]/g, '') || '100')
+      } else {
+        const result = await estimateFromImage(base64, mediaType)
+        onEstimated(result.items, result.notes ?? '', '📸 Photo meal (β)', mealSlot)
+      }
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : 'Failed to analyze photo')
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleLabelConfirm = () => {
+    if (!labelData) return
+    const qty = parseFloat(labelQty) || 100
+    const scale = qty / 100
+    const p = labelData.per100
+    const item: FoodItem = {
+      name: labelName || labelData.productName,
+      quantity: qty,
+      unit: 'g',
+      calories: Math.round(p.calories * scale),
+      protein: Math.round(p.protein * scale * 10) / 10,
+      carbs: Math.round(p.carbs * scale * 10) / 10,
+      fat: Math.round(p.fat * scale * 10) / 10,
+      fiber: Math.round(p.fiber * scale * 10) / 10,
+      edited: false,
+    }
+    onEstimated([item], labelData.notes, `📋 ${item.name}`, mealSlot)
+  }
+
+  if (labelData) {
+    const qty = parseFloat(labelQty) || 100
+    const scale = qty / 100
+    const p = labelData.per100
+    return (
+      <div className="p-4">
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-xl font-bold">Scanned Label</h1>
+          <button onClick={() => setLabelData(null)} className="text-gray-400 text-sm">Back</button>
+        </div>
+
+        <div className="space-y-3 mb-4">
+          <div>
+            <label className="text-sm font-medium text-gray-500 dark:text-gray-400 block mb-1">Product name</label>
+            <input value={labelName} onChange={(e) => setLabelName(e.target.value)}
+              className="w-full p-3 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700
+                         text-base focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+          </div>
+          <div>
+            <label className="text-sm font-medium text-gray-500 dark:text-gray-400 block mb-1">
+              Amount eaten (g){labelData.servingSize ? ` · label says: ${labelData.servingSize}` : ''}
+            </label>
+            <input type="number" inputMode="numeric" value={labelQty}
+              onChange={(e) => setLabelQty(e.target.value)}
+              className="w-full p-3 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700
+                         text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+          </div>
+        </div>
+
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-3 mb-2 text-sm">
+          <p className="text-xs text-gray-400 mb-2">Per 100g from label</p>
+          <div className="grid grid-cols-2 gap-1">
+            <span>Cal: {p.calories}</span><span>Protein: {p.protein}g</span>
+            <span>Carbs: {p.carbs}g</span><span>Fat: {p.fat}g</span>
+          </div>
+        </div>
+
+        <div className="bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-800 rounded-xl p-3 mb-4 text-sm">
+          <p className="text-xs text-emerald-600 dark:text-emerald-400 mb-1 font-semibold">For {qty}g</p>
+          <div className="grid grid-cols-2 gap-1">
+            <span>Cal: <strong>{Math.round(p.calories * scale)}</strong></span>
+            <span>Protein: <strong>{(Math.round(p.protein * scale * 10) / 10).toFixed(1)}</strong>g</span>
+            <span>Carbs: <strong>{(Math.round(p.carbs * scale * 10) / 10).toFixed(1)}</strong>g</span>
+            <span>Fat: <strong>{(Math.round(p.fat * scale * 10) / 10).toFixed(1)}</strong>g</span>
+          </div>
+        </div>
+
+        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+
+        <button onClick={handleLabelConfirm}
+          className="w-full py-3 bg-emerald-500 text-white rounded-xl font-semibold text-lg
+                     active:bg-emerald-600 transition-colors">
+          ✓ Add to Log
+        </button>
+      </div>
+    )
   }
 
   return (

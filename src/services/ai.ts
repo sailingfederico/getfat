@@ -22,9 +22,10 @@ Respond ONLY with a JSON object — no markdown, no explanation:
 
 const PHOTO_PROMPTS = {
   label: `You are a nutrition data extractor. This image shows a food product's nutrition label and/or ingredients list.
-Extract the nutritional values exactly as shown on the label for one serving (or per 100g if no serving is given).
+Extract the nutritional values PER 100g (or per 100ml for liquids) as shown on the label. Always normalize to per-100g/100ml.
+Try to identify the product name from the packaging.
 Respond ONLY with a JSON object — no markdown, no explanation:
-{"items":[{"name":"product name","quantity":0,"unit":"g","calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0}],"notes":"serving size info from label"}`,
+{"productName":"guessed product name","per100":{"calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0},"servingSize":"e.g. 30g or 250ml if shown on label","notes":"any extra info"}`,
 
   meal: `You are a nutrition expert analyzing a photo of a meal (beta feature).
 Identify each visible food component, estimate quantities from visual cues, then estimate calories and macros.
@@ -107,16 +108,46 @@ function parseEstimationResult(json: { items: FoodItem[]; notes?: string }): Est
   }
 }
 
+export interface LabelScanResult {
+  productName: string
+  per100: { calories: number; protein: number; carbs: number; fat: number; fiber: number }
+  servingSize: string
+  notes: string
+}
+
+export async function scanLabel(
+  base64: string,
+  mediaType: string,
+): Promise<LabelScanResult> {
+  const content = [
+    { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
+    { type: 'text', text: 'Extract nutrition from this label.' },
+  ]
+  const raw = await callAnthropicAPI(PHOTO_PROMPTS.label, content)
+  const json = JSON.parse(extractJSON(raw))
+  return {
+    productName: json.productName || 'Unknown product',
+    per100: {
+      calories: Math.round(json.per100.calories),
+      protein: Math.round(json.per100.protein * 10) / 10,
+      carbs: Math.round(json.per100.carbs * 10) / 10,
+      fat: Math.round(json.per100.fat * 10) / 10,
+      fiber: Math.round(json.per100.fiber * 10) / 10,
+    },
+    servingSize: json.servingSize || '',
+    notes: json.notes || '',
+  }
+}
+
 export async function estimateFromImage(
   base64: string,
   mediaType: string,
-  mode: 'label' | 'meal',
 ): Promise<EstimationResult> {
   const content = [
     { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
-    { type: 'text', text: mode === 'label' ? 'Extract nutrition from this label.' : 'What food is this? Estimate nutrition.' },
+    { type: 'text', text: 'What food is this? Estimate nutrition.' },
   ]
-  const raw = await callAnthropicAPI(PHOTO_PROMPTS[mode], content)
+  const raw = await callAnthropicAPI(PHOTO_PROMPTS.meal, content)
   return parseEstimationResult(JSON.parse(extractJSON(raw)))
 }
 
