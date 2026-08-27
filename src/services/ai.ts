@@ -20,11 +20,29 @@ Respond ONLY with a JSON object — no markdown, no explanation:
 {"items":[{"name":"...","quantity":0,"unit":"g","calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0}],"notes":"Brief description of assumed portion size"}`,
 }
 
-async function callClaude(systemPrompt: string, userMessage: string): Promise<string> {
+const PHOTO_PROMPTS = {
+  label: `You are a nutrition data extractor. This image shows a food product's nutrition label and/or ingredients list.
+Extract the nutritional values exactly as shown on the label for one serving (or per 100g if no serving is given).
+Respond ONLY with a JSON object — no markdown, no explanation:
+{"items":[{"name":"product name","quantity":0,"unit":"g","calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0}],"notes":"serving size info from label"}`,
+
+  meal: `You are a nutrition expert analyzing a photo of a meal (beta feature).
+Identify each visible food component, estimate quantities from visual cues, then estimate calories and macros.
+Be honest about uncertainty.
+Respond ONLY with a JSON object — no markdown, no explanation:
+{"items":[{"name":"...","quantity":0,"unit":"g","calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0}],"notes":"Assumptions about portions"}`,
+}
+
+async function getApiKey(): Promise<string> {
   const apiKey = await getSetting('anthropic_api_key')
   if (!apiKey)
     throw new Error('API key not set. Go to Settings to add your Anthropic API key.')
+  return apiKey
+}
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function callAnthropicAPI(systemPrompt: string, content: any): Promise<string> {
+  const apiKey = await getApiKey()
   const response = await fetch(ANTHROPIC_API_URL, {
     method: 'POST',
     headers: {
@@ -37,7 +55,7 @@ async function callClaude(systemPrompt: string, userMessage: string): Promise<st
       model: MODEL,
       max_tokens: 1024,
       system: systemPrompt,
-      messages: [{ role: 'user', content: userMessage }],
+      messages: [{ role: 'user', content }],
     }),
   })
 
@@ -48,6 +66,10 @@ async function callClaude(systemPrompt: string, userMessage: string): Promise<st
 
   const data = await response.json()
   return data.content[0].text
+}
+
+async function callClaude(systemPrompt: string, userMessage: string): Promise<string> {
+  return callAnthropicAPI(systemPrompt, userMessage)
 }
 
 function extractJSON(text: string): string {
@@ -67,6 +89,10 @@ export async function estimateNutrition(
 ): Promise<EstimationResult> {
   const raw = await callClaude(PROMPTS[mode], input)
   const json = JSON.parse(extractJSON(raw))
+  return parseEstimationResult(json)
+}
+
+function parseEstimationResult(json: { items: FoodItem[]; notes?: string }): EstimationResult {
   return {
     items: json.items.map((item: FoodItem) => ({
       ...item,
@@ -81,14 +107,31 @@ export async function estimateNutrition(
   }
 }
 
+export async function estimateFromImage(
+  base64: string,
+  mediaType: string,
+  mode: 'label' | 'meal',
+): Promise<EstimationResult> {
+  const content = [
+    { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
+    { type: 'text', text: mode === 'label' ? 'Extract nutrition from this label.' : 'What food is this? Estimate nutrition.' },
+  ]
+  const raw = await callAnthropicAPI(PHOTO_PROMPTS[mode], content)
+  return parseEstimationResult(JSON.parse(extractJSON(raw)))
+}
+
 export async function estimateWeeklyMicronutrients(
   items: FoodItem[],
   days: number,
 ): Promise<{ nutrients: MicronutrientEntry[]; summary: string }> {
-  const systemPrompt = `You are a nutrition analyst. Based on food intake data, estimate average daily micronutrient intake and compare to recommended daily values for an adult male doing strength training.
+  const systemPrompt = `You are a nutrition analyst. Estimate average daily micronutrient intake from the food data and compare to Livsmedelverket (Swedish Food Agency) recommended values for adult men:
+Vitamin A: 900 µg RE, Vitamin D: 10 µg, Vitamin E: 10 mg, Vitamin C: 75 mg,
+Thiamine B1: 1.4 mg, Riboflavin B2: 1.7 mg, Niacin B3: 19 mg NE, B6: 1.6 mg,
+Folate: 300 µg, B12: 2 µg, Calcium: 800 mg, Iron: 9 mg, Zinc: 9 mg,
+Selenium: 60 µg, Iodine: 150 µg, Magnesium: 350 mg, Potassium: 3500 mg,
+Fiber: 25-35 g, Sodium: <2400 mg, Omega-3 EPA+DHA: 250 mg.
 Respond ONLY with a JSON object — no markdown, no explanation:
-{"nutrients":[{"name":"...","avgDaily":0,"recommended":0,"unit":"g","status":"good|low|high"}],"summary":"Brief overall assessment"}
-Include: Fiber, Iron, Calcium, Vitamin D, Vitamin C, Potassium, Sodium, Magnesium, Zinc, Omega-3.`
+{"nutrients":[{"name":"...","avgDaily":0,"recommended":0,"unit":"...","status":"good|low|high"}],"summary":"Brief overall assessment"}`
 
   const userMessage = `Food intake over ${days} day(s):\n${JSON.stringify(items)}`
   const raw = await callClaude(systemPrompt, userMessage)

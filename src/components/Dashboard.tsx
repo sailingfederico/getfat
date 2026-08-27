@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getTodayLogs, getActiveTargets, getSetting } from '../db/database'
-import type { FoodLog, Targets } from '../types'
+import type { FoodLog, Targets, MicronutrientEntry } from '../types'
 import MacroDisplay from './MacroDisplay'
 
 interface Props {
@@ -11,15 +11,29 @@ export default function Dashboard({ onAddFood }: Props) {
   const [logs, setLogs] = useState<FoodLog[]>([])
   const [targets, setTargets] = useState<Targets | null>(null)
   const [hasApiKey, setHasApiKey] = useState(true)
+  const [micros, setMicros] = useState<MicronutrientEntry[] | null>(null)
+  const [microsAge, setMicrosAge] = useState('')
+  const [microsOpen, setMicrosOpen] = useState(false)
 
   useEffect(() => {
-    Promise.all([getTodayLogs(), getActiveTargets(), getSetting('anthropic_api_key')]).then(
-      ([todayLogs, activeTargets, apiKey]) => {
-        setLogs(todayLogs)
-        setTargets(activeTargets ?? null)
-        setHasApiKey(!!apiKey)
-      },
-    )
+    Promise.all([
+      getTodayLogs(),
+      getActiveTargets(),
+      getSetting('anthropic_api_key'),
+      getSetting('weekly_report_cache'),
+    ]).then(([todayLogs, activeTargets, apiKey, cached]) => {
+      setLogs(todayLogs)
+      setTargets(activeTargets ?? null)
+      setHasApiKey(!!apiKey)
+      if (cached) {
+        try {
+          const data = JSON.parse(cached)
+          setMicros(data.nutrients)
+          const days = Math.round((Date.now() - new Date(data.date).getTime()) / 86400000)
+          setMicrosAge(days === 0 ? 'today' : days === 1 ? '1 day ago' : `${days} days ago`)
+        } catch { /* ignore corrupt cache */ }
+      }
+    })
   }, [])
 
   const totals = logs.reduce(
@@ -87,6 +101,49 @@ export default function Dashboard({ onAddFood }: Props) {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {micros && micros.length > 0 && (
+        <div className="mb-4">
+          <button
+            onClick={() => setMicrosOpen(!microsOpen)}
+            className="w-full flex justify-between items-center text-left"
+          >
+            <h2 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+              Weekly Micros
+            </h2>
+            <span className="text-xs text-gray-400">{microsAge} {microsOpen ? '▲' : '▼'}</span>
+          </button>
+          {!microsOpen && (
+            <div className="flex flex-wrap gap-1.5 mt-2">
+              {micros.map((n, i) => (
+                <span key={i} className={`text-xs px-1.5 py-0.5 rounded ${
+                  n.status === 'good' ? 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400' :
+                  n.status === 'low' ? 'bg-amber-100 dark:bg-amber-900/40 text-amber-600 dark:text-amber-400' :
+                  'bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400'
+                }`}>
+                  {n.status === 'good' ? '✓' : n.status === 'low' ? '↓' : '↑'} {n.name}
+                </span>
+              ))}
+            </div>
+          )}
+          {microsOpen && (
+            <div className="mt-2 bg-gray-50 dark:bg-gray-800 rounded-xl p-3 text-xs space-y-1">
+              {micros.map((n, i) => (
+                <div key={i} className="flex justify-between">
+                  <span>{n.name}</span>
+                  <span className={
+                    n.status === 'good' ? 'text-emerald-500' :
+                    n.status === 'low' ? 'text-amber-500' : 'text-red-500'
+                  }>
+                    {n.avgDaily}{n.unit} / {n.recommended}{n.unit}
+                  </span>
+                </div>
+              ))}
+              <p className="text-gray-400 pt-1">Per Livsmedelverket · Tap Report tab to refresh</p>
+            </div>
+          )}
         </div>
       )}
 

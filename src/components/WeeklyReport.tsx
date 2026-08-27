@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getLogsForDateRange } from '../db/database'
+import { getLogsForDateRange, setSetting } from '../db/database'
 import { estimateWeeklyMicronutrients } from '../services/ai'
 import type { FoodItem, MicronutrientEntry } from '../types'
 
@@ -30,6 +30,9 @@ export default function WeeklyReport() {
       setNutrients(result.nutrients)
       setSummary(result.summary)
       setGenerated(true)
+      await setSetting('weekly_report_cache', JSON.stringify({
+        nutrients: result.nutrients, summary: result.summary, date: new Date().toISOString(),
+      }))
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : 'Failed to generate report')
     } finally {
@@ -53,7 +56,7 @@ export default function WeeklyReport() {
     <div className="p-4">
       <h1 className="text-xl font-bold mb-2">Weekly Report</h1>
       <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-        Estimates micronutrient intake from the past 7 days vs recommended values.
+        Micronutrient intake (past 7 days) vs Livsmedelverket recommendations for adult men.
       </p>
 
       {!generated && (
