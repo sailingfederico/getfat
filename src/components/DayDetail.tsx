@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { db, getActiveTargets } from '../db/database'
+import { db, getActiveTargets, setSetting } from '../db/database'
 import type { FoodLog, Targets } from '../types'
 import MacroDisplay from './MacroDisplay'
 
@@ -35,6 +35,7 @@ export default function DayDetail({ date, onBack }: Props) {
   const deleteLog = async (id: number) => {
     await db.foodLogs.delete(id)
     setLogs((prev) => prev.filter((l) => l.id !== id))
+    await db.settings.delete('weekly_report_cache')
   }
 
   const formatDate = (dateStr: string) => {
