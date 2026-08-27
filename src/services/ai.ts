@@ -2,7 +2,7 @@ import type { FoodItem, InputMode, MicronutrientEntry } from '../types'
 import { getSetting } from '../db/database'
 
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages'
-const MODEL = 'claude-3-5-haiku-20241022'
+const MODEL = 'claude-haiku-4-5'
 
 const PROMPTS: Record<InputMode, string> = {
   ingredient: `You are a nutrition database. Estimate calories and macronutrients for the given food item.

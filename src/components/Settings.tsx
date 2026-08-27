@@ -188,7 +188,7 @@ export default function Settings() {
 
       <div className="text-center text-xs text-gray-400 mt-8">
         <p>GetFat v1.0</p>
-        <p>AI: Claude 3.5 Haiku · Data stored locally</p>
+        <p>AI: Claude Haiku 4.5 · Data stored locally</p>
       </div>
     </div>
   )
