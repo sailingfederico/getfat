@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-28T11:21:01.524Z",
+  "exportedAt": "2026-08-28T11:23:02.739Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -190,6 +190,32 @@
       "approved": true,
       "createdAt": "2026-08-28T11:20:58.496Z",
       "id": 7
+    },
+    {
+      "date": "2026-08-28",
+      "mealSlot": "lunch",
+      "description": "5gr smör",
+      "items": [
+        {
+          "name": "smör (butter)",
+          "quantity": 5,
+          "unit": "g",
+          "calories": 36,
+          "protein": 0,
+          "carbs": 0,
+          "fat": 4,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 36,
+      "totalProtein": 0,
+      "totalCarbs": 0,
+      "totalFat": 4,
+      "totalFiber": 0,
+      "approved": true,
+      "createdAt": "2026-08-28T11:22:59.714Z",
+      "id": 8
     }
   ],
   "targets": [
