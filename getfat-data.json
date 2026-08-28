@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-28T14:42:27.151Z",
+  "exportedAt": "2026-08-28T14:44:12.762Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -360,6 +360,54 @@
       "approved": true,
       "createdAt": "2026-08-28T14:42:24.129Z",
       "id": 11
+    },
+    {
+      "date": "2026-08-28",
+      "mealSlot": "snack",
+      "description": "45gr mellanmjölk, 33gr Frusen mango, 8gr whey 80 protein pulver",
+      "items": [
+        {
+          "name": "mellanmjölk",
+          "quantity": 45,
+          "unit": "g",
+          "calories": 30,
+          "protein": 1.4,
+          "carbs": 1.8,
+          "fat": 2.3,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Frusen mango",
+          "quantity": 33,
+          "unit": "g",
+          "calories": 27,
+          "protein": 0.3,
+          "carbs": 6.8,
+          "fat": 0.1,
+          "fiber": 0.7,
+          "edited": false
+        },
+        {
+          "name": "whey 80 protein pulver",
+          "quantity": 8,
+          "unit": "g",
+          "calories": 30,
+          "protein": 6.4,
+          "carbs": 0.4,
+          "fat": 0.2,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 87,
+      "totalProtein": 8.1,
+      "totalCarbs": 9,
+      "totalFat": 2.6,
+      "totalFiber": 0.7,
+      "approved": true,
+      "createdAt": "2026-08-28T14:44:09.733Z",
+      "id": 12
     }
   ],
   "targets": [
