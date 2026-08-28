@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-28T06:20:35.681Z",
+  "exportedAt": "2026-08-28T06:29:54.255Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -112,6 +112,32 @@
       "approved": true,
       "createdAt": "2026-08-28T06:20:32.662Z",
       "id": 4
+    },
+    {
+      "date": "2026-08-28",
+      "mealSlot": "breakfast",
+      "description": "Vinbär 30gr",
+      "items": [
+        {
+          "name": "Vinbär (Red Currants)",
+          "quantity": 30,
+          "unit": "g",
+          "calories": 12,
+          "protein": 0.3,
+          "carbs": 2.8,
+          "fat": 0.2,
+          "fiber": 0.6,
+          "edited": false
+        }
+      ],
+      "totalCalories": 12,
+      "totalProtein": 0.3,
+      "totalCarbs": 2.8,
+      "totalFat": 0.2,
+      "totalFiber": 0.6,
+      "approved": true,
+      "createdAt": "2026-08-28T06:29:51.226Z",
+      "id": 5
     }
   ],
   "targets": [
