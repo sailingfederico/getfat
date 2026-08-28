@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-28T16:07:40.575Z",
+  "exportedAt": "2026-08-28T16:08:44.376Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -408,6 +408,76 @@
       "approved": true,
       "createdAt": "2026-08-28T14:44:09.733Z",
       "id": 12
+    },
+    {
+      "date": "2026-08-28",
+      "mealSlot": "dinner",
+      "description": "Carbonara 180gr",
+      "items": [
+        {
+          "name": "Spaghetti (cooked)",
+          "quantity": 180,
+          "unit": "g",
+          "calories": 288,
+          "protein": 10.8,
+          "carbs": 57.6,
+          "fat": 1.8,
+          "fiber": 3.6,
+          "edited": false
+        },
+        {
+          "name": "Guanciale",
+          "quantity": 50,
+          "unit": "g",
+          "calories": 252,
+          "protein": 15,
+          "carbs": 0,
+          "fat": 21,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Egg yolks",
+          "quantity": 45,
+          "unit": "g",
+          "calories": 148,
+          "protein": 8.1,
+          "carbs": 0.9,
+          "fat": 12.6,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Pecorino Romano cheese",
+          "quantity": 30,
+          "unit": "g",
+          "calories": 110,
+          "protein": 7.8,
+          "carbs": 0.6,
+          "fat": 8.4,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Black pepper",
+          "quantity": 2,
+          "unit": "g",
+          "calories": 5,
+          "protein": 0.2,
+          "carbs": 1,
+          "fat": 0.1,
+          "fiber": 0.4,
+          "edited": false
+        }
+      ],
+      "totalCalories": 803,
+      "totalProtein": 41.9,
+      "totalCarbs": 60.1,
+      "totalFat": 43.9,
+      "totalFiber": 4,
+      "approved": true,
+      "createdAt": "2026-08-28T16:08:41.357Z",
+      "id": 13
     }
   ],
   "targets": [
