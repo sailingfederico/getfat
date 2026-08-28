@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-28T11:28:28.696Z",
+  "exportedAt": "2026-08-28T11:29:44.975Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -216,6 +216,32 @@
       "approved": true,
       "createdAt": "2026-08-28T11:22:59.714Z",
       "id": 8
+    },
+    {
+      "date": "2026-08-28",
+      "mealSlot": "snack",
+      "description": "📋 Ekologisk Havre (Organic Oats) (component)",
+      "items": [
+        {
+          "name": "Ekologisk Havre (Organic Oats)",
+          "quantity": 100,
+          "unit": "g",
+          "calories": 360,
+          "protein": 13,
+          "carbs": 59,
+          "fat": 6.6,
+          "fiber": 8,
+          "edited": false
+        }
+      ],
+      "totalCalories": 360,
+      "totalProtein": 13,
+      "totalCarbs": 59,
+      "totalFat": 6.6,
+      "totalFiber": 8,
+      "approved": true,
+      "createdAt": "2026-08-28T11:29:41.958Z",
+      "id": 9
     }
   ],
   "targets": [
