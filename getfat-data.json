@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-28T07:35:01.468Z",
+  "exportedAt": "2026-08-28T11:21:01.524Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -164,6 +164,32 @@
       "approved": true,
       "createdAt": "2026-08-28T07:34:58.448Z",
       "id": 6
+    },
+    {
+      "date": "2026-08-28",
+      "mealSlot": "lunch",
+      "description": "40gr morot",
+      "items": [
+        {
+          "name": "morot (carrot)",
+          "quantity": 40,
+          "unit": "g",
+          "calories": 17,
+          "protein": 0.4,
+          "carbs": 4,
+          "fat": 0.1,
+          "fiber": 0.9,
+          "edited": false
+        }
+      ],
+      "totalCalories": 17,
+      "totalProtein": 0.4,
+      "totalCarbs": 4,
+      "totalFat": 0.1,
+      "totalFiber": 0.9,
+      "approved": true,
+      "createdAt": "2026-08-28T11:20:58.496Z",
+      "id": 7
     }
   ],
   "targets": [
