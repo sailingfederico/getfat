@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-28T11:46:49.381Z",
+  "exportedAt": "2026-08-28T11:48:49.749Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -242,6 +242,98 @@
       "approved": true,
       "createdAt": "2026-08-28T11:29:41.958Z",
       "id": 9
+    },
+    {
+      "date": "2026-08-28",
+      "mealSlot": "breakfast",
+      "description": "25gr pangrattato\n275gr petto di pollo\n50gr prosciutto crudo\n50gr latte\n25gr grana grattuggiato \nNoce moscata qb\nSale e pepe qb",
+      "items": [
+        {
+          "name": "pangrattato",
+          "quantity": 25,
+          "unit": "g",
+          "calories": 87,
+          "protein": 3,
+          "carbs": 16,
+          "fat": 1,
+          "fiber": 1,
+          "edited": false
+        },
+        {
+          "name": "petto di pollo",
+          "quantity": 275,
+          "unit": "g",
+          "calories": 305,
+          "protein": 65,
+          "carbs": 0,
+          "fat": 3.8,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "prosciutto crudo",
+          "quantity": 50,
+          "unit": "g",
+          "calories": 143,
+          "protein": 26,
+          "carbs": 0,
+          "fat": 5,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "latte",
+          "quantity": 50,
+          "unit": "g",
+          "calories": 32,
+          "protein": 1.6,
+          "carbs": 2.4,
+          "fat": 1.6,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "grana grattuggiato",
+          "quantity": 25,
+          "unit": "g",
+          "calories": 107,
+          "protein": 10,
+          "carbs": 0.4,
+          "fat": 7,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "noce moscata",
+          "quantity": 1,
+          "unit": "g",
+          "calories": 3,
+          "protein": 0.1,
+          "carbs": 0.3,
+          "fat": 0.2,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "sale e pepe",
+          "quantity": 1,
+          "unit": "g",
+          "calories": 0,
+          "protein": 0,
+          "carbs": 0,
+          "fat": 0,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 677,
+      "totalProtein": 105.7,
+      "totalCarbs": 19.1,
+      "totalFat": 18.6,
+      "totalFiber": 1,
+      "approved": true,
+      "createdAt": "2026-08-28T11:48:46.731Z",
+      "id": 10
     }
   ],
   "targets": [
