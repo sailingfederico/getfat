@@ -1,7 +1,45 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-27T19:39:21.879Z",
-  "foodLogs": [],
+  "exportedAt": "2026-08-28T05:41:12.487Z",
+  "foodLogs": [
+    {
+      "date": "2026-08-28",
+      "mealSlot": "breakfast",
+      "description": "Frittata med 2 medelstora ägg och 0.5gr smör",
+      "items": [
+        {
+          "name": "egg medium",
+          "quantity": 2,
+          "unit": "count",
+          "calories": 155,
+          "protein": 13,
+          "carbs": 1.1,
+          "fat": 11,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "butter",
+          "quantity": 0.5,
+          "unit": "g",
+          "calories": 4,
+          "protein": 0,
+          "carbs": 0,
+          "fat": 0.4,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 159,
+      "totalProtein": 13,
+      "totalCarbs": 1.1,
+      "totalFat": 11.4,
+      "totalFiber": 0,
+      "approved": true,
+      "createdAt": "2026-08-28T05:41:09.466Z",
+      "id": 2
+    }
+  ],
   "targets": [
     {
       "calories": 2800,
