@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-28T11:48:49.749Z",
+  "exportedAt": "2026-08-28T14:42:27.151Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -334,6 +334,32 @@
       "approved": true,
       "createdAt": "2026-08-28T11:48:46.731Z",
       "id": 10
+    },
+    {
+      "date": "2026-08-28",
+      "mealSlot": "snack",
+      "description": "📋 Latt Yoghurt Vanilj (component)",
+      "items": [
+        {
+          "name": "Latt Yoghurt Vanilj",
+          "quantity": 165,
+          "unit": "g",
+          "calories": 99,
+          "protein": 6.6,
+          "carbs": 14.5,
+          "fat": 0.8,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 99,
+      "totalProtein": 6.6,
+      "totalCarbs": 14.5,
+      "totalFat": 0.8,
+      "totalFiber": 0,
+      "approved": true,
+      "createdAt": "2026-08-28T14:42:24.129Z",
+      "id": 11
     }
   ],
   "targets": [
