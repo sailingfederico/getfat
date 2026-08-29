@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-29T15:29:33.917Z",
+  "exportedAt": "2026-08-29T15:34:02.757Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -865,6 +865,32 @@
       "approved": true,
       "createdAt": "2026-08-29T15:29:30.897Z",
       "id": 19
+    },
+    {
+      "date": "2026-08-29",
+      "mealSlot": "dinner",
+      "description": "5gr pecorino romano",
+      "items": [
+        {
+          "name": "Pecorino Romano",
+          "quantity": 5,
+          "unit": "g",
+          "calories": 21,
+          "protein": 1.9,
+          "carbs": 0.2,
+          "fat": 1.5,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 21,
+      "totalProtein": 1.9,
+      "totalCarbs": 0.2,
+      "totalFat": 1.5,
+      "totalFiber": 0,
+      "approved": true,
+      "createdAt": "2026-08-29T15:33:59.745Z",
+      "id": 20
     }
   ],
   "targets": [
