@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-29T12:41:35.694Z",
+  "exportedAt": "2026-08-29T12:43:34.196Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -644,6 +644,54 @@
       "approved": true,
       "createdAt": "2026-08-29T10:50:38.273Z",
       "id": 16
+    },
+    {
+      "date": "2026-08-29",
+      "mealSlot": "snack",
+      "description": "15gr frebaco havrekuddar fullkorn, 100gr kvarg, 9gr honung",
+      "items": [
+        {
+          "name": "Frebaco havrekuddar fullkorn",
+          "quantity": 15,
+          "unit": "g",
+          "calories": 55,
+          "protein": 2,
+          "carbs": 9,
+          "fat": 1.5,
+          "fiber": 1.5,
+          "edited": false
+        },
+        {
+          "name": "Kvarg",
+          "quantity": 100,
+          "unit": "g",
+          "calories": 110,
+          "protein": 13,
+          "carbs": 4,
+          "fat": 5,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Honung",
+          "quantity": 9,
+          "unit": "g",
+          "calories": 28,
+          "protein": 0,
+          "carbs": 7.5,
+          "fat": 0,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 193,
+      "totalProtein": 15,
+      "totalCarbs": 20.5,
+      "totalFat": 6.5,
+      "totalFiber": 1.5,
+      "approved": true,
+      "createdAt": "2026-08-29T12:43:31.177Z",
+      "id": 17
     }
   ],
   "targets": [
