@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-29T09:52:52.338Z",
+  "exportedAt": "2026-08-29T10:50:41.312Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -618,6 +618,32 @@
       "approved": true,
       "createdAt": "2026-08-29T09:52:49.321Z",
       "id": 15
+    },
+    {
+      "date": "2026-08-29",
+      "mealSlot": "snack",
+      "description": "📸 Photo meal (β)",
+      "items": [
+        {
+          "name": "Starbucks Protein Drink - Caffe Latte with Coffee",
+          "quantity": 370,
+          "unit": "ml",
+          "calories": 170,
+          "protein": 20,
+          "carbs": 12,
+          "fat": 3,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 170,
+      "totalProtein": 20,
+      "totalCarbs": 12,
+      "totalFat": 3,
+      "totalFiber": 0,
+      "approved": true,
+      "createdAt": "2026-08-29T10:50:38.273Z",
+      "id": 16
     }
   ],
   "targets": [
