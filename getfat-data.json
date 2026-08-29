@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-29T07:47:51.383Z",
+  "exportedAt": "2026-08-29T07:49:34.623Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -478,6 +478,76 @@
       "approved": true,
       "createdAt": "2026-08-28T16:08:41.357Z",
       "id": 13
+    },
+    {
+      "date": "2026-08-29",
+      "mealSlot": "snack",
+      "description": "2 pankakor med 2msk grädde, 1 banan, 6 blåbär, 37gr whey80",
+      "items": [
+        {
+          "name": "Pannkakor (Swedish pancakes)",
+          "quantity": 150,
+          "unit": "g",
+          "calories": 282,
+          "protein": 7.5,
+          "carbs": 36,
+          "fat": 12,
+          "fiber": 0.6,
+          "edited": false
+        },
+        {
+          "name": "Grädde (sour cream/whipping cream)",
+          "quantity": 30,
+          "unit": "g",
+          "calories": 99,
+          "protein": 0.6,
+          "carbs": 1.2,
+          "fat": 10,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Banan",
+          "quantity": 120,
+          "unit": "g",
+          "calories": 107,
+          "protein": 1.3,
+          "carbs": 27,
+          "fat": 0.3,
+          "fiber": 3.1,
+          "edited": false
+        },
+        {
+          "name": "Blåbär (blueberries)",
+          "quantity": 6,
+          "unit": "g",
+          "calories": 3,
+          "protein": 0,
+          "carbs": 0.8,
+          "fat": 0,
+          "fiber": 0.1,
+          "edited": false
+        },
+        {
+          "name": "Whey80 (whey protein powder)",
+          "quantity": 37,
+          "unit": "g",
+          "calories": 148,
+          "protein": 30,
+          "carbs": 2,
+          "fat": 1.5,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 639,
+      "totalProtein": 39.4,
+      "totalCarbs": 67,
+      "totalFat": 23.8,
+      "totalFiber": 3.8,
+      "approved": true,
+      "createdAt": "2026-08-29T07:49:31.611Z",
+      "id": 14
     }
   ],
   "targets": [
