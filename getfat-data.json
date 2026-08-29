@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-29T19:33:13.516Z",
+  "exportedAt": "2026-08-29T19:33:45.287Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -917,6 +917,32 @@
       "approved": true,
       "createdAt": "2026-08-29T19:33:10.492Z",
       "id": 21
+    },
+    {
+      "date": "2026-08-29",
+      "mealSlot": "snack",
+      "description": "35 kasein",
+      "items": [
+        {
+          "name": "Casein protein powder",
+          "quantity": 35,
+          "unit": "g",
+          "calories": 140,
+          "protein": 28,
+          "carbs": 3,
+          "fat": 1,
+          "fiber": 0,
+          "edited": true
+        }
+      ],
+      "totalCalories": 140,
+      "totalProtein": 28,
+      "totalCarbs": 3,
+      "totalFat": 1,
+      "totalFiber": 0,
+      "approved": true,
+      "createdAt": "2026-08-29T19:33:42.276Z",
+      "id": 22
     }
   ],
   "targets": [
