@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-29T15:26:49.454Z",
+  "exportedAt": "2026-08-29T15:29:33.917Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -839,6 +839,32 @@
       "approved": true,
       "createdAt": "2026-08-29T15:26:46.440Z",
       "id": 18
+    },
+    {
+      "date": "2026-08-29",
+      "mealSlot": "dinner",
+      "description": "180gr rågbröd",
+      "items": [
+        {
+          "name": "rågbröd (rye bread)",
+          "quantity": 180,
+          "unit": "g",
+          "calories": 432,
+          "protein": 14.4,
+          "carbs": 79.2,
+          "fat": 3.6,
+          "fiber": 10.8,
+          "edited": false
+        }
+      ],
+      "totalCalories": 432,
+      "totalProtein": 14.4,
+      "totalCarbs": 79.2,
+      "totalFat": 3.6,
+      "totalFiber": 10.8,
+      "approved": true,
+      "createdAt": "2026-08-29T15:29:30.897Z",
+      "id": 19
     }
   ],
   "targets": [
