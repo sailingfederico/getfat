@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-29T19:04:58.760Z",
+  "exportedAt": "2026-08-29T19:33:13.516Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -891,6 +891,32 @@
       "approved": true,
       "createdAt": "2026-08-29T15:33:59.745Z",
       "id": 20
+    },
+    {
+      "date": "2026-08-29",
+      "mealSlot": "snack",
+      "description": "37gr whey80",
+      "items": [
+        {
+          "name": "Whey Protein Isolate 80%",
+          "quantity": 37,
+          "unit": "g",
+          "calories": 143,
+          "protein": 27,
+          "carbs": 2,
+          "fat": 1,
+          "fiber": 0,
+          "edited": true
+        }
+      ],
+      "totalCalories": 143,
+      "totalProtein": 27,
+      "totalCarbs": 2,
+      "totalFat": 1,
+      "totalFiber": 0,
+      "approved": true,
+      "createdAt": "2026-08-29T19:33:10.492Z",
+      "id": 21
     }
   ],
   "targets": [
