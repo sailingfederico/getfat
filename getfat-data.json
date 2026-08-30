@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-30T16:49:04.434Z",
+  "exportedAt": "2026-08-30T16:50:57.956Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1235,6 +1235,76 @@
       "approved": true,
       "createdAt": "2026-08-30T14:58:51.184Z",
       "id": 29
+    },
+    {
+      "date": "2026-08-30",
+      "mealSlot": "dinner",
+      "description": "250 g mandelmjölk\n8 g lönnsirap eller honung\n42 g havregryn\n1 msk chiafrön\n1 ägggula",
+      "items": [
+        {
+          "name": "mandelmjölk",
+          "quantity": 250,
+          "unit": "g",
+          "calories": 88,
+          "protein": 2.6,
+          "carbs": 1.5,
+          "fat": 7.5,
+          "fiber": 0.6,
+          "edited": false
+        },
+        {
+          "name": "lönnsirap eller honung",
+          "quantity": 8,
+          "unit": "g",
+          "calories": 26,
+          "protein": 0,
+          "carbs": 6.8,
+          "fat": 0,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "havregryn",
+          "quantity": 42,
+          "unit": "g",
+          "calories": 157,
+          "protein": 5.4,
+          "carbs": 27.2,
+          "fat": 3.5,
+          "fiber": 4.3,
+          "edited": false
+        },
+        {
+          "name": "chiafrön",
+          "quantity": 1,
+          "unit": "msk",
+          "calories": 60,
+          "protein": 2,
+          "carbs": 4.8,
+          "fat": 3.6,
+          "fiber": 3.8,
+          "edited": false
+        },
+        {
+          "name": "ägggula",
+          "quantity": 1,
+          "unit": "st",
+          "calories": 55,
+          "protein": 2.7,
+          "carbs": 0.6,
+          "fat": 4.8,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 386,
+      "totalProtein": 12.7,
+      "totalCarbs": 40.9,
+      "totalFat": 19.4,
+      "totalFiber": 8.7,
+      "approved": true,
+      "createdAt": "2026-08-30T16:50:54.918Z",
+      "id": 30
     }
   ],
   "targets": [
