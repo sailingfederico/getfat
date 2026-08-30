@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-30T13:22:23.956Z",
+  "exportedAt": "2026-08-30T13:22:40.316Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1076,6 +1076,32 @@
       "approved": true,
       "createdAt": "2026-08-30T06:35:44.456Z",
       "id": 25
+    },
+    {
+      "date": "2026-08-30",
+      "mealSlot": "snack",
+      "description": "40gr bröd",
+      "items": [
+        {
+          "name": "bröd (bread)",
+          "quantity": 40,
+          "unit": "g",
+          "calories": 104,
+          "protein": 3.6,
+          "carbs": 19.2,
+          "fat": 0.8,
+          "fiber": 1.2,
+          "edited": false
+        }
+      ],
+      "totalCalories": 104,
+      "totalProtein": 3.6,
+      "totalCarbs": 19.2,
+      "totalFat": 0.8,
+      "totalFiber": 1.2,
+      "approved": true,
+      "createdAt": "2026-08-30T13:22:37.303Z",
+      "id": 26
     }
   ],
   "targets": [
