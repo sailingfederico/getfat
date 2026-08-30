@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-30T06:35:22.105Z",
+  "exportedAt": "2026-08-30T06:35:47.472Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1028,6 +1028,54 @@
       "approved": true,
       "createdAt": "2026-08-30T06:35:19.094Z",
       "id": 24
+    },
+    {
+      "date": "2026-08-30",
+      "mealSlot": "snack",
+      "description": "1 avocado, halva banan, 10gr honung",
+      "items": [
+        {
+          "name": "avocado",
+          "quantity": 150,
+          "unit": "g",
+          "calories": 240,
+          "protein": 3,
+          "carbs": 12,
+          "fat": 22,
+          "fiber": 10,
+          "edited": false
+        },
+        {
+          "name": "banana, half",
+          "quantity": 53,
+          "unit": "g",
+          "calories": 47,
+          "protein": 0.6,
+          "carbs": 12,
+          "fat": 0.2,
+          "fiber": 1.3,
+          "edited": false
+        },
+        {
+          "name": "honey",
+          "quantity": 10,
+          "unit": "g",
+          "calories": 32,
+          "protein": 0.1,
+          "carbs": 8.6,
+          "fat": 0,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 319,
+      "totalProtein": 3.7,
+      "totalCarbs": 32.6,
+      "totalFat": 22.2,
+      "totalFiber": 11.3,
+      "approved": true,
+      "createdAt": "2026-08-30T06:35:44.456Z",
+      "id": 25
     }
   ],
   "targets": [
