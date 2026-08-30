@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-30T13:22:40.316Z",
+  "exportedAt": "2026-08-30T13:24:47.618Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1102,6 +1102,65 @@
       "approved": true,
       "createdAt": "2026-08-30T13:22:37.303Z",
       "id": 26
+    },
+    {
+      "date": "2026-08-30",
+      "mealSlot": "lunch",
+      "description": "Porzione enorme di spaghetti al sugo con 10 polpette di vitello",
+      "items": [
+        {
+          "name": "Spaghetti (dry)",
+          "quantity": 150,
+          "unit": "g",
+          "calories": 540,
+          "protein": 19,
+          "carbs": 108,
+          "fat": 3,
+          "fiber": 6,
+          "edited": false
+        },
+        {
+          "name": "Tomato sauce (sugo di pomodoro)",
+          "quantity": 300,
+          "unit": "g",
+          "calories": 75,
+          "protein": 3,
+          "carbs": 12,
+          "fat": 2,
+          "fiber": 3,
+          "edited": false
+        },
+        {
+          "name": "Veal meatballs",
+          "quantity": 250,
+          "unit": "g",
+          "calories": 425,
+          "protein": 52,
+          "carbs": 8,
+          "fat": 20,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Olive oil (cooking)",
+          "quantity": 15,
+          "unit": "g",
+          "calories": 135,
+          "protein": 0,
+          "carbs": 0,
+          "fat": 15,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 1175,
+      "totalProtein": 74,
+      "totalCarbs": 128,
+      "totalFat": 40,
+      "totalFiber": 9,
+      "approved": true,
+      "createdAt": "2026-08-30T13:24:44.599Z",
+      "id": 27
     }
   ],
   "targets": [
