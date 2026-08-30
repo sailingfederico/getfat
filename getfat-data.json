@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-30T13:24:47.618Z",
+  "exportedAt": "2026-08-30T14:16:48.529Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1161,6 +1161,32 @@
       "approved": true,
       "createdAt": "2026-08-30T13:24:44.599Z",
       "id": 27
+    },
+    {
+      "date": "2026-08-30",
+      "mealSlot": "snack",
+      "description": "📋 Whey 80",
+      "items": [
+        {
+          "name": "Whey 80",
+          "quantity": 37,
+          "unit": "g",
+          "calories": 144,
+          "protein": 27.8,
+          "carbs": 2.3,
+          "fat": 2.6,
+          "fiber": 0.2,
+          "edited": false
+        }
+      ],
+      "totalCalories": 144,
+      "totalProtein": 27.8,
+      "totalCarbs": 2.3,
+      "totalFat": 2.6,
+      "totalFiber": 0.2,
+      "approved": true,
+      "createdAt": "2026-08-30T14:16:45.499Z",
+      "id": 28
     }
   ],
   "targets": [
