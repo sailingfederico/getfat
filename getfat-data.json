@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-30T16:50:57.956Z",
+  "exportedAt": "2026-08-30T17:20:39.132Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1305,6 +1305,32 @@
       "approved": true,
       "createdAt": "2026-08-30T16:50:54.918Z",
       "id": 30
+    },
+    {
+      "date": "2026-08-30",
+      "mealSlot": "snack",
+      "description": "1.5 plummon",
+      "items": [
+        {
+          "name": "Plum",
+          "quantity": 1.5,
+          "unit": "medium plums",
+          "calories": 66,
+          "protein": 1,
+          "carbs": 16,
+          "fat": 0.3,
+          "fiber": 2.3,
+          "edited": false
+        }
+      ],
+      "totalCalories": 66,
+      "totalProtein": 1,
+      "totalCarbs": 16,
+      "totalFat": 0.3,
+      "totalFiber": 2.3,
+      "approved": true,
+      "createdAt": "2026-08-30T17:20:36.108Z",
+      "id": 31
     }
   ],
   "targets": [
