@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-30T06:35:06.354Z",
+  "exportedAt": "2026-08-30T06:35:22.105Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -969,6 +969,65 @@
       "approved": true,
       "createdAt": "2026-08-29T19:33:57.926Z",
       "id": 23
+    },
+    {
+      "date": "2026-08-30",
+      "mealSlot": "breakfast",
+      "description": "Mjölk: 1 dl\nÄgg: 0,5 st (dvs ett halvt uppvispat ägg)\nVetemjöl: 0,25 dl (2,5 msk)\nWhey-80: 0,25 dl (2,5 msk)",
+      "items": [
+        {
+          "name": "Mjölk",
+          "quantity": 100,
+          "unit": "ml",
+          "calories": 61,
+          "protein": 3.2,
+          "carbs": 4.8,
+          "fat": 3.3,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Ägg",
+          "quantity": 27.5,
+          "unit": "g",
+          "calories": 39,
+          "protein": 3.2,
+          "carbs": 0.3,
+          "fat": 2.7,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Vetemjöl",
+          "quantity": 30,
+          "unit": "g",
+          "calories": 110,
+          "protein": 3.3,
+          "carbs": 23,
+          "fat": 0.3,
+          "fiber": 0.6,
+          "edited": false
+        },
+        {
+          "name": "Whey-80",
+          "quantity": 22.5,
+          "unit": "g",
+          "calories": 81,
+          "protein": 18,
+          "carbs": 1.5,
+          "fat": 0.9,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 291,
+      "totalProtein": 27.7,
+      "totalCarbs": 29.6,
+      "totalFat": 7.2,
+      "totalFiber": 0.6,
+      "approved": true,
+      "createdAt": "2026-08-30T06:35:19.094Z",
+      "id": 24
     }
   ],
   "targets": [
