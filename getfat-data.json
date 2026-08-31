@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-31T07:17:33.560Z",
+  "exportedAt": "2026-08-31T07:23:33.882Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1331,6 +1331,87 @@
       "approved": true,
       "createdAt": "2026-08-30T17:20:36.108Z",
       "id": 31
+    },
+    {
+      "date": "2026-08-31",
+      "mealSlot": "breakfast",
+      "description": "📸 Photo meal (β)",
+      "items": [
+        {
+          "name": "Kasein (Casein Protein Powder)",
+          "quantity": 20,
+          "unit": "g",
+          "calories": 80,
+          "protein": 16,
+          "carbs": 1,
+          "fat": 1,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Whey 80 (Whey Protein Isolate)",
+          "quantity": 10,
+          "unit": "g",
+          "calories": 36,
+          "protein": 8.5,
+          "carbs": 0.5,
+          "fat": 0.2,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Havregryn (Oat Bran)",
+          "quantity": 40,
+          "unit": "g",
+          "calories": 150,
+          "protein": 5,
+          "carbs": 27,
+          "fat": 3,
+          "fiber": 4,
+          "edited": false
+        },
+        {
+          "name": "Mandelmjölk (Almond Milk)",
+          "quantity": 200,
+          "unit": "ml",
+          "calories": 60,
+          "protein": 1.5,
+          "carbs": 1.5,
+          "fat": 4.5,
+          "fiber": 0.5,
+          "edited": false
+        },
+        {
+          "name": "Chiafron (Chia Seeds)",
+          "quantity": 8,
+          "unit": "g",
+          "calories": 40,
+          "protein": 1.5,
+          "carbs": 3.5,
+          "fat": 2.5,
+          "fiber": 2.5,
+          "edited": false
+        },
+        {
+          "name": "Honung (Honey)",
+          "quantity": 6.67,
+          "unit": "g",
+          "calories": 22,
+          "protein": 0.1,
+          "carbs": 5.6,
+          "fat": 0,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 388,
+      "totalProtein": 32.6,
+      "totalCarbs": 39.1,
+      "totalFat": 11.2,
+      "totalFiber": 7,
+      "approved": true,
+      "createdAt": "2026-08-31T07:23:30.849Z",
+      "id": 32
     }
   ],
   "targets": [
