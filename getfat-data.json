@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-31T11:12:03.366Z",
+  "exportedAt": "2026-08-31T11:14:58.078Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1460,6 +1460,87 @@
       "approved": true,
       "createdAt": "2026-08-31T07:23:30.849Z",
       "id": 33
+    },
+    {
+      "date": "2026-08-31",
+      "mealSlot": "lunch",
+      "description": "KOLGRILLAT LAMMFÄRSSPETT (Adana hot/ Urfa mild)\nServeras med ris, råstekt potatis & vitlöksyoghurt. 2 skivor bröd and sallad med rucola, tomat, gurka och vitkål",
+      "items": [
+        {
+          "name": "Lamb minced meat skewer (Adana/Urfa)",
+          "quantity": 150,
+          "unit": "g",
+          "calories": 345,
+          "protein": 28,
+          "carbs": 2,
+          "fat": 27,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Rice (cooked)",
+          "quantity": 200,
+          "unit": "g",
+          "calories": 260,
+          "protein": 5,
+          "carbs": 58,
+          "fat": 0.5,
+          "fiber": 1,
+          "edited": false
+        },
+        {
+          "name": "Fried potatoes",
+          "quantity": 150,
+          "unit": "g",
+          "calories": 225,
+          "protein": 3,
+          "carbs": 30,
+          "fat": 11,
+          "fiber": 2.5,
+          "edited": false
+        },
+        {
+          "name": "Garlic yogurt sauce",
+          "quantity": 100,
+          "unit": "g",
+          "calories": 110,
+          "protein": 3.5,
+          "carbs": 8,
+          "fat": 7,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Bread (2 slices)",
+          "quantity": 80,
+          "unit": "g",
+          "calories": 210,
+          "protein": 6,
+          "carbs": 40,
+          "fat": 2,
+          "fiber": 2,
+          "edited": false
+        },
+        {
+          "name": "Salad (rocket, tomato, cucumber, cabbage)",
+          "quantity": 150,
+          "unit": "g",
+          "calories": 35,
+          "protein": 2,
+          "carbs": 6,
+          "fat": 0.5,
+          "fiber": 2,
+          "edited": false
+        }
+      ],
+      "totalCalories": 1185,
+      "totalProtein": 47.5,
+      "totalCarbs": 144,
+      "totalFat": 48,
+      "totalFiber": 7.5,
+      "approved": true,
+      "createdAt": "2026-08-31T11:14:55.066Z",
+      "id": 34
     }
   ],
   "targets": [
