@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-31T16:53:24.891Z",
+  "exportedAt": "2026-08-31T16:58:03.776Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1619,6 +1619,98 @@
       "approved": true,
       "createdAt": "2026-08-31T13:54:31.753Z",
       "id": 37
+    },
+    {
+      "date": "2026-08-31",
+      "mealSlot": "dinner",
+      "description": "Romansallad, kyckling bröst 100gr, cesarsalladsdressing, lök, sardeller, parmesan, kapris, i proportion med en 400gr sallad varav 100gr är kyckling",
+      "items": [
+        {
+          "name": "Romansallad",
+          "quantity": 300,
+          "unit": "g",
+          "calories": 75,
+          "protein": 4.5,
+          "carbs": 14.1,
+          "fat": 0.9,
+          "fiber": 2.7,
+          "edited": false
+        },
+        {
+          "name": "Kyckling bröst",
+          "quantity": 100,
+          "unit": "g",
+          "calories": 165,
+          "protein": 31,
+          "carbs": 0,
+          "fat": 3.6,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Cesarsalladsdressing",
+          "quantity": 40,
+          "unit": "g",
+          "calories": 360,
+          "protein": 2,
+          "carbs": 3,
+          "fat": 38,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Lök",
+          "quantity": 20,
+          "unit": "g",
+          "calories": 7,
+          "protein": 0.2,
+          "carbs": 1.6,
+          "fat": 0,
+          "fiber": 0.3,
+          "edited": false
+        },
+        {
+          "name": "Sardeller",
+          "quantity": 15,
+          "unit": "g",
+          "calories": 29,
+          "protein": 3.2,
+          "carbs": 0,
+          "fat": 1.7,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Parmesan",
+          "quantity": 15,
+          "unit": "g",
+          "calories": 57,
+          "protein": 5.1,
+          "carbs": 0.5,
+          "fat": 3.8,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Kapris",
+          "quantity": 10,
+          "unit": "g",
+          "calories": 3,
+          "protein": 0.3,
+          "carbs": 0.6,
+          "fat": 0,
+          "fiber": 0.2,
+          "edited": false
+        }
+      ],
+      "totalCalories": 696,
+      "totalProtein": 46.3,
+      "totalCarbs": 19.8,
+      "totalFat": 48,
+      "totalFiber": 3.2,
+      "approved": true,
+      "createdAt": "2026-08-31T16:58:00.751Z",
+      "id": 39
     }
   ],
   "targets": [
