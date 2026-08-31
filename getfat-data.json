@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-31T13:54:19.653Z",
+  "exportedAt": "2026-08-31T13:54:34.772Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1593,6 +1593,32 @@
       "approved": true,
       "createdAt": "2026-08-31T12:45:11.117Z",
       "id": 36
+    },
+    {
+      "date": "2026-08-31",
+      "mealSlot": "snack",
+      "description": "Äpple",
+      "items": [
+        {
+          "name": "Apple",
+          "quantity": 182,
+          "unit": "g",
+          "calories": 95,
+          "protein": 0.5,
+          "carbs": 25,
+          "fat": 0.3,
+          "fiber": 4.4,
+          "edited": false
+        }
+      ],
+      "totalCalories": 95,
+      "totalProtein": 0.5,
+      "totalCarbs": 25,
+      "totalFat": 0.3,
+      "totalFiber": 4.4,
+      "approved": true,
+      "createdAt": "2026-08-31T13:54:31.753Z",
+      "id": 37
     }
   ],
   "targets": [
