@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-31T12:44:17.552Z",
+  "exportedAt": "2026-08-31T12:44:45.214Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1541,6 +1541,32 @@
       "approved": true,
       "createdAt": "2026-08-31T11:14:55.066Z",
       "id": 34
+    },
+    {
+      "date": "2026-08-31",
+      "mealSlot": "snack",
+      "description": "📋 Mustaporkkanamehu (Tomato Carrot Drink)",
+      "items": [
+        {
+          "name": "Mustaporkkanamehu (Tomato Carrot Drink)",
+          "quantity": 330,
+          "unit": "g",
+          "calories": 149,
+          "protein": 22.1,
+          "carbs": 11.2,
+          "fat": 0.7,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 149,
+      "totalProtein": 22.1,
+      "totalCarbs": 11.2,
+      "totalFat": 0.7,
+      "totalFiber": 0,
+      "approved": true,
+      "createdAt": "2026-08-31T12:44:42.189Z",
+      "id": 35
     }
   ],
   "targets": [
