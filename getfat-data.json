@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-31T12:44:45.214Z",
+  "exportedAt": "2026-08-31T12:45:14.142Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1567,6 +1567,32 @@
       "approved": true,
       "createdAt": "2026-08-31T12:44:42.189Z",
       "id": 35
+    },
+    {
+      "date": "2026-08-31",
+      "mealSlot": "snack",
+      "description": "Banan",
+      "items": [
+        {
+          "name": "Banana",
+          "quantity": 118,
+          "unit": "g",
+          "calories": 105,
+          "protein": 1.3,
+          "carbs": 27,
+          "fat": 0.3,
+          "fiber": 3.1,
+          "edited": false
+        }
+      ],
+      "totalCalories": 105,
+      "totalProtein": 1.3,
+      "totalCarbs": 27,
+      "totalFat": 0.3,
+      "totalFiber": 3.1,
+      "approved": true,
+      "createdAt": "2026-08-31T12:45:11.117Z",
+      "id": 36
     }
   ],
   "targets": [
