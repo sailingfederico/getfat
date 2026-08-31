@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-08-31T16:28:48.878Z",
+  "exportedAt": "2026-08-31T16:53:24.891Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1619,76 +1619,6 @@
       "approved": true,
       "createdAt": "2026-08-31T13:54:31.753Z",
       "id": 37
-    },
-    {
-      "date": "2026-08-31",
-      "mealSlot": "snack",
-      "description": "Caesar sallad",
-      "items": [
-        {
-          "name": "Romaine lettuce",
-          "quantity": 150,
-          "unit": "g",
-          "calories": 24,
-          "protein": 1.8,
-          "carbs": 4.5,
-          "fat": 0.3,
-          "fiber": 3,
-          "edited": false
-        },
-        {
-          "name": "Caesar dressing",
-          "quantity": 45,
-          "unit": "g",
-          "calories": 390,
-          "protein": 0.9,
-          "carbs": 1.8,
-          "fat": 43.2,
-          "fiber": 0,
-          "edited": false
-        },
-        {
-          "name": "Parmesan cheese",
-          "quantity": 25,
-          "unit": "g",
-          "calories": 110,
-          "protein": 10.2,
-          "carbs": 1,
-          "fat": 7.3,
-          "fiber": 0,
-          "edited": false
-        },
-        {
-          "name": "Croutons",
-          "quantity": 30,
-          "unit": "g",
-          "calories": 122,
-          "protein": 3,
-          "carbs": 16.5,
-          "fat": 4.5,
-          "fiber": 0.9,
-          "edited": false
-        },
-        {
-          "name": "Anchovy fillets",
-          "quantity": 10,
-          "unit": "g",
-          "calories": 17,
-          "protein": 3,
-          "carbs": 0,
-          "fat": 0.6,
-          "fiber": 0,
-          "edited": false
-        }
-      ],
-      "totalCalories": 663,
-      "totalProtein": 18.9,
-      "totalCarbs": 23.8,
-      "totalFat": 55.9,
-      "totalFiber": 3.9,
-      "approved": true,
-      "createdAt": "2026-08-31T16:28:45.860Z",
-      "id": 38
     }
   ],
   "targets": [
