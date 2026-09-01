@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-09-01T17:04:46.094Z",
+  "exportedAt": "2026-09-01T17:07:05.038Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1914,6 +1914,98 @@
       "approved": true,
       "createdAt": "2026-09-01T15:06:28.912Z",
       "id": 43
+    },
+    {
+      "date": "2026-09-01",
+      "mealSlot": "dinner",
+      "description": "Tacos med 170gr nötkött, 2.5 large tprtillas santa Maria, 0.5 avocado, 0.3 paprika, 30gr majs, 2 matskedar lätt creme freche, 10st nachos santa maria",
+      "items": [
+        {
+          "name": "Nötkött (ground beef, cooked)",
+          "quantity": 170,
+          "unit": "g",
+          "calories": 340,
+          "protein": 35,
+          "carbs": 0,
+          "fat": 21,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Tortillas Santa Maria (large, flour)",
+          "quantity": 2.5,
+          "unit": "piece",
+          "calories": 535,
+          "protein": 14,
+          "carbs": 76,
+          "fat": 14,
+          "fiber": 4,
+          "edited": false
+        },
+        {
+          "name": "Avocado",
+          "quantity": 0.5,
+          "unit": "piece",
+          "calories": 120,
+          "protein": 1.5,
+          "carbs": 6,
+          "fat": 11,
+          "fiber": 5,
+          "edited": false
+        },
+        {
+          "name": "Paprika (red bell pepper)",
+          "quantity": 90,
+          "unit": "g",
+          "calories": 27,
+          "protein": 0.9,
+          "carbs": 6,
+          "fat": 0.3,
+          "fiber": 1.8,
+          "edited": false
+        },
+        {
+          "name": "Majs (corn kernels)",
+          "quantity": 30,
+          "unit": "g",
+          "calories": 26,
+          "protein": 0.9,
+          "carbs": 5.5,
+          "fat": 0.3,
+          "fiber": 0.6,
+          "edited": false
+        },
+        {
+          "name": "Lätt creme fraiche (light sour cream)",
+          "quantity": 30,
+          "unit": "g",
+          "calories": 45,
+          "protein": 2.4,
+          "carbs": 1.2,
+          "fat": 3.6,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Nachos Santa Maria",
+          "quantity": 10,
+          "unit": "piece",
+          "calories": 110,
+          "protein": 2,
+          "carbs": 12,
+          "fat": 6,
+          "fiber": 1,
+          "edited": false
+        }
+      ],
+      "totalCalories": 1203,
+      "totalProtein": 56.7,
+      "totalCarbs": 106.7,
+      "totalFat": 56.2,
+      "totalFiber": 12.4,
+      "approved": true,
+      "createdAt": "2026-09-01T17:07:02.015Z",
+      "id": 44
     }
   ],
   "targets": [
