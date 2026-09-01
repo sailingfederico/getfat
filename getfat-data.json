@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-09-01T15:05:29.978Z",
+  "exportedAt": "2026-09-01T15:06:31.935Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1888,6 +1888,32 @@
       "approved": true,
       "createdAt": "2026-09-01T11:05:57.260Z",
       "id": 42
+    },
+    {
+      "date": "2026-09-01",
+      "mealSlot": "snack",
+      "description": "74gr whey 80",
+      "items": [
+        {
+          "name": "Whey Protein Powder (80% protein)",
+          "quantity": 74,
+          "unit": "g",
+          "calories": 264,
+          "protein": 59,
+          "carbs": 4,
+          "fat": 2,
+          "fiber": 0,
+          "edited": false
+        }
+      ],
+      "totalCalories": 264,
+      "totalProtein": 59,
+      "totalCarbs": 4,
+      "totalFat": 2,
+      "totalFiber": 0,
+      "approved": true,
+      "createdAt": "2026-09-01T15:06:28.912Z",
+      "id": 43
     }
   ],
   "targets": [
