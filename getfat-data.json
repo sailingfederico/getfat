@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-09-01T09:32:59.355Z",
+  "exportedAt": "2026-09-01T11:06:00.294Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1796,6 +1796,98 @@
       "approved": true,
       "createdAt": "2026-09-01T06:45:09.457Z",
       "id": 41
+    },
+    {
+      "date": "2026-09-01",
+      "mealSlot": "snack",
+      "description": "Caesar sallad (enligt bilden) + 2 bitar focaccia",
+      "items": [
+        {
+          "name": "Kyckling (Chicken)",
+          "quantity": 100,
+          "unit": "g",
+          "calories": 165,
+          "protein": 31,
+          "carbs": 0,
+          "fat": 3.6,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Bacon",
+          "quantity": 25,
+          "unit": "g",
+          "calories": 125,
+          "protein": 9,
+          "carbs": 0,
+          "fat": 10,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Grana Padano (Parmesan)",
+          "quantity": 17.5,
+          "unit": "g",
+          "calories": 70,
+          "protein": 7,
+          "carbs": 1,
+          "fat": 4.5,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Krutonger (Croutons)",
+          "quantity": 25,
+          "unit": "g",
+          "calories": 110,
+          "protein": 2,
+          "carbs": 14,
+          "fat": 5,
+          "fiber": 0.5,
+          "edited": false
+        },
+        {
+          "name": "Caesar dressing",
+          "quantity": 45,
+          "unit": "g",
+          "calories": 215,
+          "protein": 2,
+          "carbs": 2,
+          "fat": 22,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Romaine/Lettuce/Tomato",
+          "quantity": 50,
+          "unit": "g",
+          "calories": 50,
+          "protein": 1,
+          "carbs": 9,
+          "fat": 0,
+          "fiber": 1.5,
+          "edited": false
+        },
+        {
+          "name": "Focaccia bread",
+          "quantity": 80,
+          "unit": "g",
+          "calories": 240,
+          "protein": 6,
+          "carbs": 32,
+          "fat": 10,
+          "fiber": 1.5,
+          "edited": false
+        }
+      ],
+      "totalCalories": 975,
+      "totalProtein": 58,
+      "totalCarbs": 58,
+      "totalFat": 55.1,
+      "totalFiber": 3.5,
+      "approved": true,
+      "createdAt": "2026-09-01T11:05:57.260Z",
+      "id": 42
     }
   ],
   "targets": [
