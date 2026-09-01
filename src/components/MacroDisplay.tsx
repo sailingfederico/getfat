@@ -30,6 +30,8 @@ export default function MacroDisplay({ label, current, target, unit, color }: Pr
     )
   }
 
+  const remaining = Math.max(target - current, 0)
+
   return (
     <div className="mb-3">
       <div className="flex justify-between items-baseline mb-1">
@@ -41,7 +43,10 @@ export default function MacroDisplay({ label, current, target, unit, color }: Pr
           <span className="text-gray-400">
             {' '}/ {Math.round(target)} {unit}
           </span>
-          <span className="text-gray-400 ml-1">({displayPct}%)</span>
+          {over
+            ? <span className="text-red-500 ml-1">(+{Math.round(current - target)})</span>
+            : <span className="text-gray-400 ml-1">{Math.round(remaining)} left</span>
+          }
         </span>
       </div>
       <div className={`h-2 rounded-full ${c.bg} overflow-hidden`}>

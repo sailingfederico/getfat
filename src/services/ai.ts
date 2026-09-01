@@ -4,35 +4,22 @@ import { getSetting } from '../db/database'
 const ANTHROPIC_API_URL = 'https://api.anthropic.com/v1/messages'
 const MODEL = 'claude-haiku-4-5'
 
-const PROMPTS: Record<InputMode, string> = {
-  ingredient: `You are a nutrition database. Estimate calories and macronutrients for the given food item.
-If no quantity is specified, assume a typical single serving and state the assumed weight.
-Respond ONLY with a JSON object — no markdown, no explanation:
-{"items":[{"name":"...","quantity":0,"unit":"g","calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0}]}`,
+const UNIFIED_PROMPT = `You are a nutrition expert and food database. The user will describe what they ate — it could be a single ingredient, a recipe, a full meal, or a combination. They may also attach a photo of a nutrition label or of actual food.
 
-  recipe: `You are a nutrition database. For EACH ingredient in the recipe below, estimate calories and macronutrients for the given quantity.
-Respond ONLY with a JSON object — no markdown, no explanation:
-{"items":[{"name":"...","quantity":0,"unit":"g","calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0}]}`,
+Your job: identify every food item, estimate quantity if not specified, and calculate calories and macronutrients for each.
 
-  meal: `You are a nutrition database. Estimate a typical restaurant/homemade portion for the meal described.
-Break it into component ingredients, estimate quantities, then calculate nutrition for each.
-Respond ONLY with a JSON object — no markdown, no explanation:
-{"items":[{"name":"...","quantity":0,"unit":"g","calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0}],"notes":"Brief description of assumed portion size"}`,
-}
+Rules:
+- If a photo of a nutrition LABEL is attached, extract per-100g values and also return them in the "per100" field. The user may specify a quantity in their text — if so, scale accordingly.
+- If a photo of FOOD is attached, identify visible components and estimate portions.
+- If no photo, estimate from the text description alone.
+- If quantities are missing, assume a typical single serving.
+- Always break down into individual components.
 
-const PHOTO_PROMPTS = {
-  label: `You are a nutrition data extractor. This image shows a food product's nutrition label and/or ingredients list.
-Extract the nutritional values PER 100g (or per 100ml for liquids) as shown on the label. Always normalize to per-100g/100ml.
-Try to identify the product name from the packaging.
 Respond ONLY with a JSON object — no markdown, no explanation:
-{"productName":"guessed product name","per100":{"calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0},"servingSize":"e.g. 30g or 250ml if shown on label","notes":"any extra info"}`,
+{"items":[{"name":"...","quantity":0,"unit":"g","calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0}],"notes":"any assumptions or info","per100":null}
 
-  meal: `You are a nutrition expert analyzing a photo of a meal (beta feature).
-Identify each visible food component, estimate quantities from visual cues, then estimate calories and macros.
-Be honest about uncertainty.
-Respond ONLY with a JSON object — no markdown, no explanation:
-{"items":[{"name":"...","quantity":0,"unit":"g","calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0}],"notes":"Assumptions about portions"}`,
-}
+If it's a nutrition label, also include:
+{"items":[...],"notes":"...","per100":{"productName":"...","calories":0,"protein":0,"carbs":0,"fat":0,"fiber":0,"servingSize":"..."}}`
 
 async function getApiKey(): Promise<string> {
   const apiKey = await getSetting('anthropic_api_key')
@@ -82,20 +69,32 @@ function extractJSON(text: string): string {
 export interface EstimationResult {
   items: FoodItem[]
   notes?: string
+  per100?: {
+    productName: string
+    calories: number
+    protein: number
+    carbs: number
+    fat: number
+    fiber: number
+    servingSize: string
+  }
 }
 
-export async function estimateNutrition(
-  input: string,
-  mode: InputMode,
+export async function estimate(
+  text: string,
+  image?: { base64: string; mediaType: string },
 ): Promise<EstimationResult> {
-  const raw = await callClaude(PROMPTS[mode], input)
-  const json = JSON.parse(extractJSON(raw))
-  return parseEstimationResult(json)
-}
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const content: any[] = []
+  if (image) {
+    content.push({ type: 'image', source: { type: 'base64', media_type: image.mediaType, data: image.base64 } })
+  }
+  content.push({ type: 'text', text: text || 'Analyze this food.' })
 
-function parseEstimationResult(json: { items: FoodItem[]; notes?: string }): EstimationResult {
+  const raw = await callAnthropicAPI(UNIFIED_PROMPT, content)
+  const json = JSON.parse(extractJSON(raw))
   return {
-    items: json.items.map((item: FoodItem) => ({
+    items: (json.items ?? []).map((item: FoodItem) => ({
       ...item,
       calories: Math.round(item.calories),
       protein: Math.round(item.protein * 10) / 10,
@@ -105,9 +104,19 @@ function parseEstimationResult(json: { items: FoodItem[]; notes?: string }): Est
       edited: false,
     })),
     notes: json.notes,
+    per100: json.per100 ? {
+      productName: json.per100.productName || 'Unknown product',
+      calories: Math.round(json.per100.calories),
+      protein: Math.round(json.per100.protein * 10) / 10,
+      carbs: Math.round(json.per100.carbs * 10) / 10,
+      fat: Math.round(json.per100.fat * 10) / 10,
+      fiber: Math.round(json.per100.fiber * 10) / 10,
+      servingSize: json.per100.servingSize || '',
+    } : undefined,
   }
 }
 
+// Legacy wrappers for components that still use old API
 export interface LabelScanResult {
   productName: string
   per100: { calories: number; protein: number; carbs: number; fat: number; fiber: number }
@@ -115,40 +124,32 @@ export interface LabelScanResult {
   notes: string
 }
 
-export async function scanLabel(
-  base64: string,
-  mediaType: string,
-): Promise<LabelScanResult> {
-  const content = [
-    { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
-    { type: 'text', text: 'Extract nutrition from this label.' },
-  ]
-  const raw = await callAnthropicAPI(PHOTO_PROMPTS.label, content)
-  const json = JSON.parse(extractJSON(raw))
-  return {
-    productName: json.productName || 'Unknown product',
-    per100: {
-      calories: Math.round(json.per100.calories),
-      protein: Math.round(json.per100.protein * 10) / 10,
-      carbs: Math.round(json.per100.carbs * 10) / 10,
-      fat: Math.round(json.per100.fat * 10) / 10,
-      fiber: Math.round(json.per100.fiber * 10) / 10,
-    },
-    servingSize: json.servingSize || '',
-    notes: json.notes || '',
-  }
+export async function estimateNutrition(input: string, _mode: InputMode): Promise<EstimationResult> {
+  return estimate(input)
 }
 
-export async function estimateFromImage(
-  base64: string,
-  mediaType: string,
-): Promise<EstimationResult> {
-  const content = [
-    { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
-    { type: 'text', text: 'What food is this? Estimate nutrition.' },
-  ]
-  const raw = await callAnthropicAPI(PHOTO_PROMPTS.meal, content)
-  return parseEstimationResult(JSON.parse(extractJSON(raw)))
+export async function estimateFromImage(base64: string, mediaType: string): Promise<EstimationResult> {
+  return estimate('What food is this? Estimate nutrition.', { base64, mediaType })
+}
+
+export async function scanLabel(base64: string, mediaType: string): Promise<LabelScanResult> {
+  const result = await estimate('Extract nutrition from this food label.', { base64, mediaType })
+  if (result.per100) {
+    return {
+      productName: result.per100.productName,
+      per100: result.per100,
+      servingSize: result.per100.servingSize,
+      notes: result.notes || '',
+    }
+  }
+  // Fallback if AI didn't return per100
+  const first = result.items[0]
+  return {
+    productName: first?.name || 'Unknown',
+    per100: { calories: first?.calories ?? 0, protein: first?.protein ?? 0, carbs: first?.carbs ?? 0, fat: first?.fat ?? 0, fiber: first?.fiber ?? 0 },
+    servingSize: '',
+    notes: result.notes || '',
+  }
 }
 
 export async function estimateWeeklyMicronutrients(
