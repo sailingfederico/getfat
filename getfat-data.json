@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-09-01T06:41:42.204Z",
+  "exportedAt": "2026-09-01T06:45:12.509Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1737,6 +1737,65 @@
       "approved": true,
       "createdAt": "2026-08-31T18:03:55.176Z",
       "id": 40
+    },
+    {
+      "date": "2026-09-01",
+      "mealSlot": "snack",
+      "description": "Overnight oats whey\nWhey: ~37 g\nHavregryn: ~60 g\nLätt kvarg: ~45 g\nChiafrön: ~24 g",
+      "items": [
+        {
+          "name": "Whey protein powder",
+          "quantity": 37,
+          "unit": "g",
+          "calories": 132,
+          "protein": 30,
+          "carbs": 1,
+          "fat": 1,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Oats (Havregryn)",
+          "quantity": 60,
+          "unit": "g",
+          "calories": 227,
+          "protein": 8,
+          "carbs": 38,
+          "fat": 5,
+          "fiber": 6,
+          "edited": false
+        },
+        {
+          "name": "Quark (Lätt kvarg)",
+          "quantity": 45,
+          "unit": "g",
+          "calories": 41,
+          "protein": 8,
+          "carbs": 2,
+          "fat": 0.5,
+          "fiber": 0,
+          "edited": false
+        },
+        {
+          "name": "Chia seeds (Chiafrön)",
+          "quantity": 24,
+          "unit": "g",
+          "calories": 115,
+          "protein": 4,
+          "carbs": 8,
+          "fat": 7,
+          "fiber": 6,
+          "edited": false
+        }
+      ],
+      "totalCalories": 515,
+      "totalProtein": 50,
+      "totalCarbs": 49,
+      "totalFat": 13.5,
+      "totalFiber": 12,
+      "approved": true,
+      "createdAt": "2026-09-01T06:45:09.457Z",
+      "id": 41
     }
   ],
   "targets": [
