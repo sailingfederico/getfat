@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "exportedAt": "2026-09-01T09:23:39.012Z",
+  "exportedAt": "2026-09-01T09:32:59.355Z",
   "foodLogs": [
     {
       "date": "2026-08-28",
@@ -1814,6 +1814,14 @@
       "fat": 80,
       "effectiveFrom": "2026-08-28",
       "id": 2
+    },
+    {
+      "calories": 2600,
+      "protein": 180,
+      "carbs": 290,
+      "fat": 80,
+      "effectiveFrom": "2026-09-01",
+      "id": 3
     }
   ]
 }
